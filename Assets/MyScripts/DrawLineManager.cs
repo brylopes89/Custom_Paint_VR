@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawLineManager : MonoBehaviour
+namespace Valve.VR.Extras
 {
-    public SteamVR_TrackedObject trackedObj;
-
-    void Update()
+    public class DrawLineManager : MonoBehaviour
     {
-        SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
-        if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
+        //public SteamVR_TrackedObject trackedObj;
+
+        void Update()
         {
-            debug.Log("Got Here");
+       
         }
-    }
+    }   
 }
