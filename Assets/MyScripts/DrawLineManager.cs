@@ -10,25 +10,32 @@ public class DrawLineManager : MonoBehaviour
     public SteamVR_Action_Boolean trackPadAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("InteractUI");
     public SteamVR_Action_Vibration hapticAction;
 
-    private LineRenderer currLine;
+    private GraphicsLineRenderer currLine;
     private int numClicks = 0;
+
+    private void Start()
+    {
+        
+    }
 
     void Update()
     {
         if (trackPadAction.GetStateDown(trackedObj.inputSource))
         {
             GameObject go = new GameObject();
-            currLine = go.AddComponent<LineRenderer>();
-            currLine.SetWidth(.1f, .1f);
+            go.AddComponent<MeshFilter>();
+            go.AddComponent<MeshRenderer>();
+            currLine = go.AddComponent<GraphicsLineRenderer>();
 
-            numClicks = 0;
-            //print(trackedObj.inputSource);
-            //print(trackedObj.inputSource);
+            currLine.setWidth(.1f);
+
+            numClicks = 0;            
         }
         else if (trackPadAction.GetState(trackedObj.inputSource))
         {
-            currLine.SetVertexCount(numClicks + 1);
-            currLine.SetPosition(numClicks, trackedObj.transform.position);
+            //currLine.positionCount = numClicks + 1;
+            //currLine.SetPosition(numClicks, trackedObj.transform.position);
+            currLine.AddPoint(trackedObj.transform.position);
             numClicks++;
         }
     }
