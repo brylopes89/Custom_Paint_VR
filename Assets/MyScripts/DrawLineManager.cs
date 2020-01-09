@@ -31,32 +31,11 @@ public class DrawLineManager : MonoBehaviour
             currLine.SetPosition(numClicks, trackedObj.transform.position);
             numClicks++;
         }
-        /*if (trackPadAction.GetStateDown(SteamVR_Input_Sources.LeftHand))
-        {
-            //Pulse(1, 150, 75, SteamVR_Input_Sources.LeftHand);
-            GameObject go = new GameObject();
-            currLine = go.AddComponent<LineRenderer>();
-        }
-        else if (trackPadAction.GetState(SteamVR_Input_Sources.LeftHand))
-        {
-            currLine.SetPosition(0, trackedObj);
-        }
-        if (trackPadAction.GetStateDown(SteamVR_Input_Sources.RightHand))
-        {
-            //Pulse(1, 150, 75, SteamVR_Input_Sources.RightHand);
-        }
-        else if (trackPadAction.GetState(SteamVR_Input_Sources.RightHand))
-        {
-
-        }*/
-
     }
 
     private void Pulse(float duration, float frequency, float amplitude, SteamVR_Input_Sources source)
     {
         hapticAction.Execute(0, duration, frequency, amplitude, source);
-
-        //print("pulse" + " " + source.ToString());
     }
 }   
 
