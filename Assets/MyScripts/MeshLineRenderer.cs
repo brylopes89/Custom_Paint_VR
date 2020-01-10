@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent (typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshFilter))]
-public class GraphicsLineRenderer : MonoBehaviour
+public class MeshLineRenderer : MonoBehaviour
 {
 	public Material lmat;
 
