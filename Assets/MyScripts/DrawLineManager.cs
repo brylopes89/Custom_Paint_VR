@@ -44,6 +44,7 @@ public class DrawLineManager : MonoBehaviour
 
     void Update()// to do, smooth out currposition with last position to create ribbon effect
     {
+
         if (trackPadAction.GetStateDown(trackedObj.inputSource))
         {
             GameObject go = new GameObject();
