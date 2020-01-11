@@ -22,7 +22,7 @@ public class ColorManager : MonoBehaviour
         }
     }
 
-    private Color color;
+    private Color color = Color.blue;
     void OnColorChange(HSBColor color)
     {
         this.color = color.ToColor();

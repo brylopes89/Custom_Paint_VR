@@ -14,31 +14,31 @@ public class MeshLineRenderer : MonoBehaviour
 
 	private float lineSize = .1f;
 
-	private bool firstQuad = true;
+	private bool firstQuad = true;	
 
 	void Start()
 	{
 		ml = GetComponent<MeshFilter>().mesh;
-		GetComponent<MeshRenderer>().material = lmat;
+		GetComponent<MeshRenderer>().material = lmat;	
 	}
 
-	public void setWidth(float width)
+	public void SetWidth(float width)
 	{
 		lineSize = width;
 	}
 
-	public void AddPoint(Vector3 point)
+	public void AddPoint(Vector3 point, Vector3 playerPos)
 	{
 		if (s != Vector3.zero)
 		{
-			AddLine(ml, MakeQuad(s, point, lineSize, firstQuad));
+			AddLine(ml, MakeQuad(s, point, playerPos, lineSize, firstQuad));
 			firstQuad = false;
 		}
 
 		s = point;
 	}
 
-	Vector3[] MakeQuad(Vector3 s, Vector3 e, float w, bool all)
+	Vector3[] MakeQuad(Vector3 s, Vector3 e, Vector3 playerPos, float w, bool all)
 	{
 		w = w / 2;
 
@@ -52,7 +52,8 @@ public class MeshLineRenderer : MonoBehaviour
 			q = new Vector3[2];
 		}
 
-		Vector3 n = Vector3.Cross(s, e);
+		//Vector3 n = Vector3.Cross(s, e);
+		Vector3 n = playerPos - s;
 		Vector3 l = Vector3.Cross(n, e - s);
 		l.Normalize();
 
