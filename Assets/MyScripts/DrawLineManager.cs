@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
-using System.IO;
-using System.Text;
-using LitJson;
-using JimmyGao;
 
 public class DrawLineManager : MonoBehaviour
 {
@@ -18,29 +14,6 @@ public class DrawLineManager : MonoBehaviour
 
     private MeshLineRenderer currLine;
     private int numClicks = 0;
-
-    //public SteamVR_TrackedObject TrackedObj;
-    /*public static BrushManager Instance;
-    public Hand BrushHand;
-    public Hand SwitcherHand;
-    public GameObject BrushObj;
-    public GameObject BrushMenu;
-    //public Hand hand2;
-    public GameObject InitLineObj;
-    public List<Color> BrushColor;
-    public GameObject ColorPalette;
-
-    public GameObject LaserBeam;
-
-    private Vector3 lastPos;
-    private int segNum = 0;
-    // Use this for initialization
-    //0 idle  1 draw
-    int CurrentState;
-    int colorIdx;
-    public List<GameObject> GoList = new List<GameObject>();
-    string txtname = "brushsavejson.txt";*/
-    
 
     void Update()// to do, smooth out currposition with last position to create ribbon effect
     {

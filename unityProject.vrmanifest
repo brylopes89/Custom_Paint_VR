@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.custom_paint_brush_vr.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Brylo\\src\\Custom_Paint_Brush_VR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\Brylo\\src\\Custom_Paint_VR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Custom_Paint_Brush_VR [Testing]"
