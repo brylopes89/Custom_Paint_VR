@@ -1,17 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class ColorIndicator : MonoBehaviour {
 
 	HSBColor color;
 
 	void Start() {
-		color = HSBColor.FromColor(GetComponent<Renderer>().sharedMaterial.GetColor("_Color"));
+		color = HSBColor.FromColor(GetComponent<Image>().material.GetColor("_Color"));
 		transform.parent.BroadcastMessage("SetColor", color);
 	}
 
 	void ApplyColor ()
 	{
-		GetComponent<Renderer>().sharedMaterial.SetColor ("_Color", color.ToColor());
+		GetComponent<Image>().material.SetColor ("_Color", color.ToColor());
 		transform.parent.BroadcastMessage("OnColorChange", color, SendMessageOptions.DontRequireReceiver);
 	}
 

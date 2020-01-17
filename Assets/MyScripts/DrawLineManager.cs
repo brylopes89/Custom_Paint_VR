@@ -6,18 +6,23 @@ using Valve.VR.InteractionSystem;
 
 public class DrawLineManager : MonoBehaviour
 {
+    public static DrawLineManager Instance;
     public SteamVR_Behaviour_Pose trackedObj;   
     public SteamVR_Action_Boolean trackPadAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("InteractUI");
     public SteamVR_Action_Vibration hapticAction;
     public Material lMat;
     public Transform playerTrans;
-
-    private MeshLineRenderer currLine;
+    
+    [HideInInspector] public List<GameObject> lineRendererList = new List<GameObject>();
+    [HideInInspector] public MeshLineRenderer currLine;
     private int numClicks = 0;
 
+    public void Awake()
+    {
+        Instance = this;
+    }
     void Update()// to do, smooth out currposition with last position to create ribbon effect
     {
-
         if (trackPadAction.GetStateDown(trackedObj.inputSource))
         {
             GameObject go = new GameObject();
@@ -26,7 +31,8 @@ public class DrawLineManager : MonoBehaviour
 
             currLine = go.AddComponent<MeshLineRenderer>();
             currLine.lmat = new Material(lMat);
-            currLine.SetWidth(.1f);                  
+            currLine.SetWidth(.1f);
+            lineRendererList.Add(go);
         }
         else if (trackPadAction.GetState(trackedObj.inputSource))
         {
@@ -34,6 +40,7 @@ public class DrawLineManager : MonoBehaviour
             //currLine.SetPosition(numClicks, trackedObj.transform.position);
             currLine.AddPoint(trackedObj.transform.position, playerTrans.position);
             numClicks++;
+            
         }
         else if (trackPadAction.GetStateUp(trackedObj.inputSource))
         {
@@ -43,8 +50,10 @@ public class DrawLineManager : MonoBehaviour
 
         if (currLine != null)
         {
-            currLine.lmat.color = ColorManager.Instance.GetCurrentColor();
+            currLine.lmat.color = ColorManager.Instance.GetCurrentColor();            
         }
+
+            
     }
 
     private void Pulse(float duration, float frequency, float amplitude, SteamVR_Input_Sources source)

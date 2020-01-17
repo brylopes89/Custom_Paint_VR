@@ -6,14 +6,14 @@ public class SerialUISummoner : MonoBehaviour
 {
     public float minDistance = 2;
     public float delay = 0.5f;
-    public bool showing = false;
+    public bool showing = false;   
     public Transform player;
-
+    
     protected Animator[] children;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         children = GetComponentsInChildren<Animator>();
         for (int a = 0; a < children.Length; a++)
         {
@@ -25,7 +25,7 @@ public class SerialUISummoner : MonoBehaviour
     void Update()
     {
         Vector3 delta = Camera.main.transform.position - transform.position;
-
+        
         if(delta.magnitude < minDistance)
         {
             if (showing) return;            

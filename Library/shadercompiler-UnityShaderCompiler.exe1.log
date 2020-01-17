@@ -1,2 +1,4 @@
 Base path: 'C:/Program Files/2019.2.17f1/Editor/Data', plugins path 'C:/Program Files/2019.2.17f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
+Cmd: disassembleShader
+  api=4 insize=682 outsize=1395 ok=1
