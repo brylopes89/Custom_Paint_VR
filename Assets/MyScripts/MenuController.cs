@@ -7,22 +7,16 @@ public class MenuController : MonoBehaviour
 {
     public Text sizetext;
 
-    private int size;
-    private float lineWidth;
+    private float size;    
    
     List<GameObject> lineList = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        lineWidth = .1f;
+        size = DrawLineManager.Instance.lineWidth;             
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
     public void BtnUndoClicked()
     {
         lineList = DrawLineManager.Instance.lineRendererList;
@@ -32,5 +26,41 @@ public class MenuController : MonoBehaviour
             lineList.Remove(lineList[lineList.Count - 1]);
             Debug.Log("Undo Pressed");
         }
+    }
+    public void BtnClearClicked()
+    {
+        lineList = DrawLineManager.Instance.lineRendererList;
+        if (lineList.Count > 0)
+        {
+            foreach (GameObject item in lineList)
+            {
+                GameObject.Destroy(item);
+            }
+            lineList.Clear();
+        }
+    }
+    public void BtnPlusBrushSize()
+    {       
+        size += .02f;
+        if (size > .5f)
+        {
+            size = .5f;
+        }
+        else if (size > .02f && size < .5f)
+        {
+            DrawLineManager.Instance.lineWidth = size;
+            Debug.Log(size);
+        }        
+    }
+    public void BtnMinusBrushSize()
+    {
+        size -= .02f;
+        if (size < 0.02f)
+        {
+            size = 0.02f;
+        }
+        DrawLineManager.Instance.lineWidth = size;
+        Debug.Log(size);
+        
     }
 }

@@ -12,6 +12,7 @@ public class DrawLineManager : MonoBehaviour
     public SteamVR_Action_Vibration hapticAction;
     public Material lMat;
     public Transform playerTrans;
+    public float lineWidth = .1f;
     
     [HideInInspector] public List<GameObject> lineRendererList = new List<GameObject>();
     [HideInInspector] public MeshLineRenderer currLine;
@@ -31,7 +32,7 @@ public class DrawLineManager : MonoBehaviour
 
             currLine = go.AddComponent<MeshLineRenderer>();
             currLine.lmat = new Material(lMat);
-            currLine.SetWidth(.1f);
+            currLine.SetWidth(lineWidth);
             lineRendererList.Add(go);
         }
         else if (trackPadAction.GetState(trackedObj.inputSource))
@@ -60,5 +61,6 @@ public class DrawLineManager : MonoBehaviour
     {
         hapticAction.Execute(0, duration, frequency, amplitude, source);
     }
+
 }   
 
