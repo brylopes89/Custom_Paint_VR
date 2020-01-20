@@ -850,6 +850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 105336, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -857,6 +861,10 @@ PrefabInstance:
     - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 171246, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -901,6 +909,18 @@ PrefabInstance:
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: useControllerHoverComponent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: useHoverSphere
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489144, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -1465,17 +1485,17 @@ PrefabInstance:
     - target: {fileID: 256099790111673017, guid: 6cad482948d3d264492cdf87d2a0bde8,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 256099790111673017, guid: 6cad482948d3d264492cdf87d2a0bde8,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 256099790111673017, guid: 6cad482948d3d264492cdf87d2a0bde8,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cad482948d3d264492cdf87d2a0bde8, type: 3}
@@ -5508,6 +5528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63980cdc65f4ba4798d1e61a390fa3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  penPoint: {fileID: 1574673907}
   trackedObj: {fileID: 789237712}
   trackPadAction:
     actionPath: /actions/default/in/InteractUI
@@ -5552,6 +5573,12 @@ MonoBehaviour:
   disableAllOtherActionSets: 0
   activateOnStart: 1
   deactivateOnDestroy: 1
+--- !u!1 &1574673907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 55684515620579505, guid: 6cad482948d3d264492cdf87d2a0bde8,
+    type: 3}
+  m_PrefabInstance: {fileID: 208525078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1614329068
 GameObject:
   m_ObjectHideFlags: 0

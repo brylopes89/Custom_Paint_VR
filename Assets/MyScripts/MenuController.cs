@@ -7,14 +7,16 @@ public class MenuController : MonoBehaviour
 {
     public Text sizetext;
 
-    private float size;    
+    private float lineSize;
+    private GameObject penPointSize;
    
     List<GameObject> lineList = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        size = DrawLineManager.Instance.lineWidth;             
+        lineSize = DrawLineManager.Instance.lineWidth;
+        penPointSize = DrawLineManager.Instance.penPoint;
     }
 
     public void BtnUndoClicked()
@@ -41,26 +43,34 @@ public class MenuController : MonoBehaviour
     }
     public void BtnPlusBrushSize()
     {       
-        size += .02f;
-        if (size > .5f)
+        lineSize += .02f;
+        
+        if (lineSize > .2f)
         {
-            size = .5f;
+            lineSize = .2f;
+            
         }
-        else if (size > .02f && size < .5f)
+        else if (lineSize > .02f && lineSize < .2f)
         {
-            DrawLineManager.Instance.lineWidth = size;
-            Debug.Log(size);
+            DrawLineManager.Instance.lineWidth = lineSize;
+            penPointSize.transform.localScale *= 1.3f;
+            Debug.Log(lineSize);
         }        
     }
     public void BtnMinusBrushSize()
     {
-        size -= .02f;
-        if (size < 0.02f)
+        lineSize -= .02f;
+        if (lineSize < 0.02f)
         {
-            size = 0.02f;
+            lineSize = 0.02f;
+        }        
+        else if(lineSize > .02f && lineSize < .2f)
+        {
+            penPointSize.transform.localScale /= 1.3f;
+            DrawLineManager.Instance.lineWidth = lineSize;
         }
-        DrawLineManager.Instance.lineWidth = size;
-        Debug.Log(size);
+
+        Debug.Log(lineSize);
         
     }
 }

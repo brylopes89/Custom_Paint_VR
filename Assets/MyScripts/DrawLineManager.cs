@@ -7,6 +7,7 @@ using Valve.VR.InteractionSystem;
 public class DrawLineManager : MonoBehaviour
 {
     public static DrawLineManager Instance;
+    public GameObject penPoint;
     public SteamVR_Behaviour_Pose trackedObj;   
     public SteamVR_Action_Boolean trackPadAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("InteractUI");
     public SteamVR_Action_Vibration hapticAction;
@@ -16,6 +17,7 @@ public class DrawLineManager : MonoBehaviour
     
     [HideInInspector] public List<GameObject> lineRendererList = new List<GameObject>();
     [HideInInspector] public MeshLineRenderer currLine;
+
     private int numClicks = 0;
 
     public void Awake()
@@ -28,11 +30,15 @@ public class DrawLineManager : MonoBehaviour
         {
             GameObject go = new GameObject();
             go.AddComponent<MeshFilter>();
-            go.AddComponent<MeshRenderer>();
+            go.AddComponent<MeshRenderer>();            
 
-            currLine = go.AddComponent<MeshLineRenderer>();
-            currLine.lmat = new Material(lMat);
+            currLine = go.AddComponent<MeshLineRenderer>();            
+            currLine.lmat = new Material(lMat);            
             currLine.SetWidth(lineWidth);
+            currLine.transform.position = go.transform.position;
+
+            go.transform.position = penPoint.transform.position;
+
             lineRendererList.Add(go);
         }
         else if (trackPadAction.GetState(trackedObj.inputSource))
