@@ -1,5 +1,5 @@
 sceneSetups:
-- path: C:/Users/Brylo/src/Hover-UI-Kit/Unity/Assets/Hover/InputModules/Vive/Scenes/HoverInputModule-Vive.unity
+- path: Assets/MyScenes/DrawingInSpace.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

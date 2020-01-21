@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    public Text sizetext;
-
     private float lineSize;
     private GameObject penPointSize;
    
@@ -16,10 +14,10 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         lineSize = DrawLineManager.Instance.lineWidth;
-        penPointSize = DrawLineManager.Instance.penPoint;
+        penPointSize = DrawLineManager.Instance.penPoint;        
     }
 
-    public void BtnUndoClicked()
+    public void UndoPressed()
     {
         lineList = DrawLineManager.Instance.lineRendererList;
         if (lineList.Count > 0)
@@ -29,7 +27,7 @@ public class MenuController : MonoBehaviour
             Debug.Log("Undo Pressed");
         }
     }
-    public void BtnClearClicked()
+    public void ClearPressed()
     {
         lineList = DrawLineManager.Instance.lineRendererList;
         if (lineList.Count > 0)
@@ -41,32 +39,32 @@ public class MenuController : MonoBehaviour
             lineList.Clear();
         }
     }
-    public void BtnPlusBrushSize()
+    public void PlusSizePressed()
     {       
         lineSize += .02f;
         
-        if (lineSize > .2f)
+        if (lineSize > .22f)
         {
-            lineSize = .2f;
+            lineSize = .22f;
             
         }
-        else if (lineSize > .02f && lineSize < .2f)
+        else if (lineSize >= .02f && lineSize <= .22f)
         {
             DrawLineManager.Instance.lineWidth = lineSize;
-            penPointSize.transform.localScale *= 1.3f;
+            penPointSize.transform.localScale *= 1.25f;
             Debug.Log(lineSize);
         }        
     }
-    public void BtnMinusBrushSize()
+    public void MinusSizePressed()
     {
         lineSize -= .02f;
         if (lineSize < 0.02f)
         {
             lineSize = 0.02f;
         }        
-        else if(lineSize > .02f && lineSize < .2f)
+        else if(lineSize >= .02f && lineSize <= .22f)
         {
-            penPointSize.transform.localScale /= 1.3f;
+            penPointSize.transform.localScale /= 1.25f;
             DrawLineManager.Instance.lineWidth = lineSize;
         }
 

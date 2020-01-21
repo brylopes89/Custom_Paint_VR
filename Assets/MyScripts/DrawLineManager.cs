@@ -34,8 +34,11 @@ public class DrawLineManager : MonoBehaviour
     void Update()// to do, smooth out currposition with last position to create ribbon effect
     {
         VR_Pointer laserPointer = FindObjectOfType<VR_Pointer>();
-
-        if (!laserPointer.PointAt)
+        if (laserPointer.PointAt)
+        {
+            currLine = null;
+        }
+        else
         {
             if (trackPadAction.GetStateDown(trackedObj.inputSource))
             {
@@ -46,9 +49,7 @@ public class DrawLineManager : MonoBehaviour
                 currLine = go.AddComponent<MeshLineRenderer>();
                 currLine.lmat = new Material(lMat);
                 currLine.SetWidth(lineWidth);
-                currLine.transform.position = go.transform.position;
-
-                go.transform.position = penPoint.transform.position;
+                currLine.transform.position = go.transform.position;               
 
                 lineRendererList.Add(go);
             }
@@ -56,7 +57,7 @@ public class DrawLineManager : MonoBehaviour
             {
                 //currLine.positionCount = numClicks + 1;
                 //currLine.SetPosition(numClicks, trackedObj.transform.position);
-                currLine.AddPoint(trackedObj.transform.position, playerTrans.position);
+                currLine.AddPoint(penPoint.transform.position, playerTrans.position);
                 numClicks++;
 
             }
@@ -68,9 +69,11 @@ public class DrawLineManager : MonoBehaviour
 
             if (currLine != null)
             {
-                currLine.lmat.color = ColorManager.Instance.GetCurrentColor();
+                currLine.lmat.color = ColorManager.Instance.GetCurrentColor();                
             }
-        }            
+        }
+
+        penPoint.GetComponent<Renderer>().material.color = ColorManager.Instance.GetCurrentColor();
     }
 
     public void ShowBrushMenu()

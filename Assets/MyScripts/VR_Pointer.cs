@@ -6,10 +6,12 @@ using UnityEngine.EventSystems;
 
 public class VR_Pointer : MonoBehaviour
 {
-    public float m_DefaultLength = 5.0f;
+    public float m_DefaultLength = 5.0f;    
     public GameObject m_Dot;
     public VRRaycastInput m_InputModule;
     public bool PointAt = false;
+
+    [HideInInspector] public float targetLength;
 
     private LineRenderer m_LineRenderer = null;
 
@@ -28,7 +30,7 @@ public class VR_Pointer : MonoBehaviour
     {
         //Use default or distance
         PointerEventData data = m_InputModule.GetData();
-        float targetLength = data.pointerCurrentRaycast.distance == 0 ? m_DefaultLength : data.pointerCurrentRaycast.distance;
+        targetLength = data.pointerCurrentRaycast.distance == 0 ? m_DefaultLength : data.pointerCurrentRaycast.distance;
         
         Ray ray = new Ray(transform.position, transform.forward);
        // RaycastHit hit = CreateRaycast(targetLength);        
@@ -38,8 +40,7 @@ public class VR_Pointer : MonoBehaviour
         {     
             if (hit.transform.GetComponent<GraphicRaycaster>() != null || hit.transform.GetComponentInParent<GraphicRaycaster>() != null || hit.transform.GetComponent<BoxCollider>() != null)
             {
-                PointAt = true;
-                Debug.Log("Raycaster detected");
+                PointAt = true;               
 
                 m_LineRenderer.enabled = true;                
                 m_Dot.gameObject.SetActive(true);
