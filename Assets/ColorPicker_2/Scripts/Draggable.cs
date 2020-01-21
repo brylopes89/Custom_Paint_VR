@@ -8,6 +8,7 @@ public class Draggable : MonoBehaviour
 
 	public bool fixX;
 	public bool fixY;
+	public bool fixZ;
 	public Transform thumb;
 
 	private Collider col;
@@ -56,6 +57,6 @@ public class Draggable : MonoBehaviour
 
 	void SetThumbPosition(Vector3 point)
 	{
-		thumb.position = new Vector3(fixX ? thumb.position.x : point.x, fixY ? thumb.position.y : point.y, thumb.position.z);
+		thumb.position = new Vector3(fixX ? thumb.position.x : point.x, fixY ? thumb.position.y : point.y, fixZ ? transform.position.z : point.z);
 	}
 }

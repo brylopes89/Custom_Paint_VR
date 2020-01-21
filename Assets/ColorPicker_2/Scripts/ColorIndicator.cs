@@ -9,16 +9,16 @@ public class ColorIndicator : MonoBehaviour {
 	HSBColor colorImage;
 
 	void Start() {
-		//color = HSBColor.FromColor(GetComponent<Renderer>().sharedMaterial.GetColor("_Color"));
-		colorImage = HSBColor.FromColor(GetComponent<Image>().material.GetColor("_Color"));
+		color = HSBColor.FromColor(GetComponent<Renderer>().sharedMaterial.GetColor("_Color"));
+		//colorImage = HSBColor.FromColor(GetComponent<Image>().material.GetColor("_Color"));
 		transform.parent.BroadcastMessage("SetColor", colorImage);
 	}
 
 	void ApplyColor ()
 	{
-		//GetComponent<Renderer>().sharedMaterial.SetColor ("_Color", color.ToColor());
-		GetComponent<Image>().material.SetColor("_Color", colorImage.ToColor());
-		transform.parent.BroadcastMessage("OnColorChange", colorImage, SendMessageOptions.DontRequireReceiver);
+		GetComponent<Renderer>().sharedMaterial.SetColor ("_Color", color.ToColor());
+		//GetComponent<Image>().material.SetColor("_Color", colorImage.ToColor());
+		transform.parent.BroadcastMessage("OnColorChange", color, SendMessageOptions.DontRequireReceiver);
 	}
 
 	void SetHue(float hue)

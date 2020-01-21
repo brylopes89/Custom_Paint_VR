@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR;
 
 public class ButtonPress : MonoBehaviour
@@ -26,9 +27,8 @@ public class ButtonPress : MonoBehaviour
             RaycastHit hit;
 
             if (col.Raycast(ray, out hit, Mathf.Infinity))
-            {               
-                menuController.BtnUndoClicked();             
-
+            {
+                GetComponent<Button>().onClick.Invoke();
             }
         }
     }

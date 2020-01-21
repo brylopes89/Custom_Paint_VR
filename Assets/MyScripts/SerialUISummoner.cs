@@ -40,7 +40,7 @@ public class SerialUISummoner : MonoBehaviour
     public IEnumerator ActivateInTurn()
     {
         showing = true;
-        Debug.Log("Activate");
+
         yield return new WaitForSeconds(delay);
         for (int a = 0; a < children.Length; a++)
         {
@@ -52,7 +52,7 @@ public class SerialUISummoner : MonoBehaviour
     public IEnumerator DeactivateInTurn()
     {
         showing = false;
-        Debug.Log("Deactivate"); 
+         
         yield return new WaitForSeconds(delay);
         for (int a = 0; a < children.Length; a++)
         {
