@@ -10,7 +10,7 @@ public class DrawLineManager : MonoBehaviour
     public GameObject penPoint;
     public GameObject menu;
     public Hand leftHand;
-    public SteamVR_Behaviour_Pose trackedObj;   
+    public SteamVR_Behaviour_Pose trackedObj;    
     public SteamVR_Action_Boolean trackPadAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("InteractUI");
     public SteamVR_Action_Vibration hapticAction;
     public Material lMat;
@@ -24,7 +24,8 @@ public class DrawLineManager : MonoBehaviour
 
     public void Awake()
     {
-        Instance = this;        
+        Instance = this;      
+        
     }
 
     private void Start()
@@ -54,12 +55,11 @@ public class DrawLineManager : MonoBehaviour
                 lineRendererList.Add(go);
             }
             else if (trackPadAction.GetState(trackedObj.inputSource))
-            {
-                //currLine.positionCount = numClicks + 1;
-                //currLine.SetPosition(numClicks, trackedObj.transform.position);
-                currLine.AddPoint(penPoint.transform.position, playerTrans.position);
-                numClicks++;
+            {              
+                //Vector3 points = penPoint
+                currLine.AddPoint(penPoint.transform.position, playerTrans.position); //trackedObj.transform.position
 
+                numClicks++;
             }
             else if (trackPadAction.GetStateUp(trackedObj.inputSource))
             {
@@ -85,6 +85,7 @@ public class DrawLineManager : MonoBehaviour
     public void SetMenuPosition(GameObject menu)
     {        
         GameObject game = menu.transform.parent.gameObject;
+       
         game.transform.parent = leftHand.transform;
         game.transform.localRotation = Quaternion.Euler(new Vector3(55f, leftHand.transform.rotation.eulerAngles.y, 0));
         game.transform.localPosition = new Vector3(0.2f, 0, 0);
